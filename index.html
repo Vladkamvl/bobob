@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор имени</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4a90e2;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #357ab8;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Как вас зовут?</h1>
+        <form id="nameForm">
+            <label>
+                <input type="radio" name="name" value="кристина"> Кристина
+            </label>
+            <label>
+                <input type="radio" name="name" value="великослав"> Великослав
+            </label>
+            <button type="submit">Отправить</button>
+        </form>
+        
+        <div class="result" id="result"></div>
+    </div>
+    
+    <script>
+        document.getElementById('nameForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const selectedName = formData.get('name');
+            const resultDiv = document.getElementById('result');
+            
+            if (selectedName === 'кристина') {
+                resultDiv.textContent = 'Ха-ха, мой гениальный и великолепный тест говорит что вы очень и очень глупая, хаха как ожидаемо(А вот Великолепнослав очень и очень умный)';
+                resultDiv.style.color = '#d9534f'; // Красный цвет для этого сообщения
+            } else if (selectedName === 'великослав') {
+                resultDiv.textContent = 'Я знаю, что ты Глупистина, зачем врешь? Великослав великий всё видит и всё знает, падай на колени перед ним, рабыня';
+                resultDiv.style.color = '#f0ad4e'; // Желтый цвет для этого сообщения
+            }
+        });
+    </script>
+</body>
+</html>
